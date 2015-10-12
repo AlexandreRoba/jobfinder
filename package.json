@@ -1,0 +1,20 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "description": "Job Finding App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexandre Roba",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "jade": "^1.11.0"
+  },
+  "devDependencies": {
+    "bower": "^1.5.3",
+    "tsd": "^0.6.5",
+    "typescript": "^1.6.2"
+  }
+}
