@@ -19,6 +19,12 @@
     },
     "jade/jade.d.ts": {
       "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "78403087985447808602abed828b3b5d8b8016cb"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "78403087985447808602abed828b3b5d8b8016cb"
     }
   }
 }
