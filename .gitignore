@@ -1,3 +1,6 @@
+#Cloud9 files to be ignored
+.c9
+
 # Logs
 logs
 *.log
@@ -30,9 +33,12 @@ node_modules
 # client Dependency directory
 bower_components
 
+.tscache
+
 # Typings Dependency directory
 typings
 
 #Ignore JavaScript files and map files
 *.js
 *.js.map
+!Gruntfile.js
