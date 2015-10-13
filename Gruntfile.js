@@ -34,7 +34,7 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            build: [
+            buildOutput: [
                 'server/**/*.js', 
                 'server/**/*.js.map',
                 'public/**/*.js',
@@ -42,7 +42,12 @@ module.exports = function(grunt) {
                 'test/**/*.js', 
                 'test/**/*.js.map', 
                 'spikes/**/*.js', 
-                'spikes/**/*.js.map']
+                'spikes/**/*.js.map'],
+            sourceFiles:[
+                'server/**/*.js.map',
+                'public/**/*.js.map',
+                'test',
+                'spikes']
         },
         tslint: {
             options: {
@@ -54,6 +59,7 @@ module.exports = function(grunt) {
         }
     });
     //Define the default task
-    grunt.registerTask('default', ['clean', 'tslint', 'ts']);
+    grunt.registerTask('default', ['clean:buildOutput', 'tslint', 'ts']);
     grunt.registerTask('test', ['default', 'mochaTest']);
+    grunt.registerTask('deploy',['clean']);
 };
