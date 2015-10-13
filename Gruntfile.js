@@ -50,8 +50,8 @@ module.exports = function(grunt) {
             buildOutput: [
                 'server/build', 
                 'public/app/build',
-                'test/build/**/*.*', 
-                'spikes/build/**/*.*'],
+                'test/build', 
+                'spikes/build'],
             baseDir:[
                 'server/**/.baseDir.*',
                 'public/**/.baseDir.*']

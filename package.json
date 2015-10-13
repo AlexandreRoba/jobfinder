@@ -1,9 +1,10 @@
 {
   "name": "workspace",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Job Finding App",
   "main": "index.js",
   "scripts": {
+    "start": "node ./server/build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexandre Roba",
@@ -26,6 +27,7 @@
     "grunt-tslint": "^2.5.0",
     "grunt-typescript": "^0.7.0",
     "mocha": "^2.3.3",
+    "pac": "^1.0.0",
     "tsd": "^0.6.5",
     "tslint": "^2.5.1",
     "typescript": "^1.6.2"

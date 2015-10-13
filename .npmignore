@@ -5,3 +5,10 @@ public/app/src
 server/src
 spikes
 test
+typings
+.gitignore
+.npmignore
+bower.json
+Gruntfile.json
+tsd.json
+tslint.json
