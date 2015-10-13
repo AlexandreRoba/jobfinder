@@ -7,18 +7,31 @@ module.exports = function(grunt) {
     //Project Configuration
     grunt.initConfig({
         ts: {
-            default: {
+            server: {
                 src: [
-                    'server/**/*.ts',
-                    'public/**/*.ts',
-                    'test/**/*.js',
-                    'spikes/**/*.ts'],
-                //dest:'build',
+                    'server/src/**/*.ts'
+                    ],
+                dest:'server/build',
                 options: {
+                    fast: 'never',
                     module: 'commonjs',
                     target: 'es5',
                     rootDir: ".",
-                    sourceMap: true,
+                    sourceMap: false,
+                    declaration: false
+                }
+            },
+            client:{
+                src: [
+                    'public/app/src/**/*.ts'
+                    ],
+                dest:'public/app/build',
+                options: {
+                    fast: 'never',
+                    module: 'commonjs',
+                    target: 'es5',
+                    rootDir: ".",
+                    sourceMap: false,
                     declaration: false
                 }
             }
@@ -35,31 +48,29 @@ module.exports = function(grunt) {
         },
         clean: {
             buildOutput: [
-                'server/**/*.js', 
-                'server/**/*.js.map',
-                'public/**/*.js',
-                'public/**/*.js.map', 
-                'test/**/*.js', 
-                'test/**/*.js.map', 
-                'spikes/**/*.js', 
-                'spikes/**/*.js.map'],
-            sourceFiles:[
-                'server/**/*.js.map',
-                'public/**/*.js.map',
-                'test',
-                'spikes']
+                'server/build', 
+                'public/app/build',
+                'test/build/**/*.*', 
+                'spikes/build/**/*.*'],
+            baseDir:[
+                'server/**/.baseDir.*',
+                'public/**/.baseDir.*']
         },
         tslint: {
             options: {
                 configuration: grunt.file.readJSON("tslint.json")
             },
             files: {
-                src: ['server/**/*.ts', 'test/**/*.ts', 'spikes/**/*.ts']
+                src: [
+                    'server/src**/*.ts',
+                    'public/app/src/**/*.ts',
+                    'test/src/**/*.ts', 
+                    'spikes/src/**/*.ts']
             }
         }
     });
     //Define the default task
-    grunt.registerTask('default', ['clean:buildOutput', 'tslint', 'ts']);
+    grunt.registerTask('default', ['clean:buildOutput', 'tslint', 'ts:server', 'ts:client','clean:baseDir']);
     grunt.registerTask('test', ['default', 'mochaTest']);
     grunt.registerTask('deploy',['clean']);
 };
