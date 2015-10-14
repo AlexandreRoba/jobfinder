@@ -8,7 +8,7 @@ test
 typings
 .gitignore
 .npmignore
-bower.json
-Gruntfile.json
+node_modules
+Gruntfile.js
 tsd.json
 tslint.json
