@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexandre Roba",
-  "license": "MST",
+  "license": "MIT",
   "dependencies": {
     "angular": "^1.4.7",
     "bootstrap": "^3.3.5",
@@ -24,6 +24,8 @@
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.6.0",
+    "grunt-git-remote-tag": "0.0.4",
+    "grunt-github-release-asset": "^0.1.2",
     "grunt-mocha-test": "^0.12.7",
     "grunt-ts": "^5.0.1",
     "grunt-tslint": "^2.5.0",

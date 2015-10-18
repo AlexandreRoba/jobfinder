@@ -42,3 +42,9 @@ typings
 *.js
 *.js.map
 !Gruntfile.js
+
+#Ignore github token
+githubtoken.json
+
+#Ignore packaged modules
+.modules
