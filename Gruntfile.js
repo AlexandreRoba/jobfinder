@@ -4,9 +4,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-tslint');
-    grunt.loadNpmTasks('grunt-github-release-asset');
-    grunt.loadNpmTasks('grunt-git-remote-tag');
-    grunt.loadNpmTasks('grunt-version-bump');
 
     //Project Configuration
     grunt.initConfig({
@@ -15,7 +12,7 @@ module.exports = function(grunt) {
                 src: [
                     'server/src/**/*.ts'
                 ],
-                dest: 'server/build',
+                //dest: 'server/build',
                 options: {
                     fast: 'never',
                     module: 'commonjs',
@@ -29,7 +26,7 @@ module.exports = function(grunt) {
                 src: [
                     'public/app/src/**/*.ts'
                 ],
-                dest: 'public/app/build',
+                //dest: 'public/app/build',
                 options: {
                     fast: 'never',
                     module: 'commonjs',
@@ -73,25 +70,6 @@ module.exports = function(grunt) {
                     'test/src/**/*.ts',
                     'spikes/src/**/*.ts'
                 ]
-            }
-        },
-        githubAsset: {
-            options: {
-                credentials: grunt.file.readJSON('githubtoken.json'),
-                repo: 'git@github.com:AlexandreRoba/jobfinder.git',
-                file: 'JobFinder-0.0.1.tgz',
-                releaseName: 'Version {tag}'
-            }
-        },
-        gitRemoteTag: {
-            release: {
-                options: {
-                    tag: util.format('v.%s-%s', process.env.BUILD_NUMBER, process.env.ENVIRONMENT),
-                    remote: 'origin',
-                    //message: 'It worked!',
-                    force: false
-                },
-                src: './'
             }
         }
     });

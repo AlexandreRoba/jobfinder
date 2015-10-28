@@ -38,10 +38,11 @@ bower_components
 # Typings Dependency directory
 typings
 
+#Commented to commit the js files to source control in order to be deployed :(
 #Ignore JavaScript files and map files
-*.js
-*.js.map
-!Gruntfile.js
+#*.js
+#*.js.map
+#!Gruntfile.js
 
 #Ignore github token
 githubtoken.json
