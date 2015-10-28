@@ -1,6 +1,9 @@
 #Cloud9 files to be ignored
 .c9
 
+#Webstorm files to be ignored
+.idea
+
 # Logs
 logs
 *.log
