@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         ts: {
             server: {
                 src: [
-                    'server/src/**/*.ts'
+                    'server/**/*.ts'
                 ],
                 //dest: 'server/build',
                 options: {
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
             },
             client: {
                 src: [
-                    'public/app/src/**/*.ts'
+                    'public/app/**/*.ts'
                 ],
                 //dest: 'public/app/build',
                 options: {
@@ -49,10 +49,8 @@ module.exports = function(grunt) {
         },
         clean: {
             buildOutput: [
-                'server/build',
-                'public/app/build',
-                'test/build',
-                'spikes/build'
+                'server/**/*.js',
+                'public/app/**/*.js'
             ],
             baseDir: [
                 'server/**/.baseDir.*',
@@ -65,10 +63,8 @@ module.exports = function(grunt) {
             },
             files: {
                 src: [
-                    'server/src**/*.ts',
-                    'public/app/src/**/*.ts',
-                    'test/src/**/*.ts',
-                    'spikes/src/**/*.ts'
+                    'server/**/*.ts',
+                    'public/app/**/*.ts'
                 ]
             }
         }

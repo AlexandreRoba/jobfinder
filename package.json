@@ -4,7 +4,7 @@
   "description": "Job Finding App",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/build/server.js",
+    "start": "node ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexandre Roba",
