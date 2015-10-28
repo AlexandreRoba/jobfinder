@@ -4,6 +4,9 @@
 #Webstorm files to be ignored
 .idea
 
+#Do not source control the data
+data
+
 # Logs
 logs
 *.log
