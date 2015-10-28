@@ -8,4 +8,7 @@ app.use("/vendor", express.static(__dirname + "/../node_modules"));
 app.get("*", function (req, res) {
     res.render("index");
 });
-app.listen(process.env.PORT, process.env.IP);
+var port = process.env.PORT || 3000;
+app.listen(port, process.env.IP, function () {
+    console.log("listening on port " + port);
+});
