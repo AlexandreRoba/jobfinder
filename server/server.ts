@@ -1,6 +1,9 @@
 /// <reference path='../typings/express/express.d.ts'/>
+/// <reference path='../typings/mongoose/mongoose.d.ts'/>
 
 import express = require("express");
+import mongoose = require("mongoose");
+import Job =  require("./models/Job");
 
 let app = express();
 
@@ -10,12 +13,28 @@ app.set("view engine", "jade");
 app.use(express.static(__dirname + "/../public"));
 app.use("/vendor",  express.static(__dirname + "/../node_modules"));
 
+app.get("/api/jobs", (req, res) => {
+   mongoose.model("Job").find({}).exec((error, collection) => {
+       res.send(collection);
+   });
+});
+
 app.get("*", function(req, res){
     res.render("index");
 });
 
 let port = process.env.PORT || 3000;
+let ip = process.env.IP || "127.0.0.1";
 
-app.listen(port, process.env.IP, () => {
+mongoose.connect("mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/jobfinder");
+
+let con = mongoose.connection;
+
+con.once("open", () => {
+    console.log("Connected to mongodb successfully!");
+    Job.seedJobs();
+});
+
+app.listen(port, ip, () => {
     console.log("listening on port " + port);
 });
