@@ -36,6 +36,9 @@ con.once("open", () => {
     Job.seedJobs();
 });
 
+console.log("Server will listen on PORT:" + port );
+console.log("Server will listen at IP:" + ip );
+
 app.listen(port, ip, () => {
     console.log("listening on port " + port);
 });

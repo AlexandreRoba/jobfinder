@@ -24,6 +24,8 @@ con.once("open", function () {
     console.log("Connected to mongodb successfully!");
     Job.seedJobs();
 });
+console.log("Server will listen on PORT:" + port);
+console.log("Server will listen at IP:" + ip);
 app.listen(port, ip, function () {
     console.log("listening on port " + port);
 });
