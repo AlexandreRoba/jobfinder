@@ -29,15 +29,16 @@ let connectionString = process.env.MONGOLAB_URI || "mongodb://localhost/jobfinde
 
 //mongoose.connect("mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/jobfinder");
 //mongoose.connect("mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/heroku_8pxnb825");
-mongoose.connect(connectionString);
+//mongoose.connect(connectionString);
 
 
-let con = mongoose.connection;
+//let con = mongoose.connection;
+//
+//con.once("open", () => {
+//    console.log("Connected to mongodb successfully!");
+//    Job.seedJobs();
+//});
 
-con.once("open", () => {
-    console.log("Connected to mongodb successfully!");
-    Job.seedJobs();
-});
 console.log("Mongo Connection string is:" + connectionString);
 console.log("Server will listen on PORT:" + port );
 console.log("Server will listen at IP:" + ip );
