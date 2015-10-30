@@ -27,6 +27,7 @@ let port = process.env.PORT || 3000;
 let ip = process.env.IP || "127.0.0.1";
 
 mongoose.connect("mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/jobfinder");
+// mongoose.connect("mongodb://localhost/jobfinder");
 
 let con = mongoose.connection;
 
