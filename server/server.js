@@ -18,12 +18,14 @@ app.get("*", function (req, res) {
 });
 var port = process.env.PORT || 3000;
 var ip = process.env.IP || "127.0.0.1";
-mongoose.connect("mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/jobfinder");
+var connectionString = process.env.MONGOLAB_URI || "mongodb://localhost/jobfinder";
+mongoose.connect(connectionString);
 var con = mongoose.connection;
 con.once("open", function () {
     console.log("Connected to mongodb successfully!");
     Job.seedJobs();
 });
+console.log("Mongo Connection string is:" + connectionString);
 console.log("Server will listen on PORT:" + port);
 console.log("Server will listen at IP:" + ip);
 app.listen(port, ip, function () {
