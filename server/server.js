@@ -17,7 +17,7 @@ app.get("*", function (req, res) {
     res.render("index");
 });
 var port = process.env.PORT || 3000;
-var ip = process.env.IP || "127.0.0.1";
+var ip = process.env.IP || "0.0.0.0";
 var connectionString = process.env.MONGOLAB_URI || "mongodb://localhost/jobfinder";
 mongoose.connect(connectionString);
 var con = mongoose.connection;
