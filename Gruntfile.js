@@ -8,25 +8,13 @@ module.exports = function(grunt) {
     //Project Configuration
     grunt.initConfig({
         ts: {
-            server: {
+            all: {
                 src: [
-                    'server/**/*.ts'
+                    'server/**/*.ts',
+                    'public/app/**/*.ts',
+                    'test/**/*.ts'
                 ],
                 //dest: 'server/build',
-                options: {
-                    fast: 'never',
-                    module: 'commonjs',
-                    target: 'es5',
-                    rootDir: ".",
-                    sourceMap: false,
-                    declaration: false
-                }
-            },
-            client: {
-                src: [
-                    'public/app/**/*.ts'
-                ],
-                //dest: 'public/app/build',
                 options: {
                     fast: 'never',
                     module: 'commonjs',
@@ -71,7 +59,7 @@ module.exports = function(grunt) {
     });
 
     //Define the default task
-    grunt.registerTask('default', ['clean:buildOutput', 'tslint', 'ts:server', 'ts:client', 'clean:baseDir']);
+    grunt.registerTask('default', ['clean:buildOutput', 'tslint', 'ts:all', 'clean:baseDir']);
     grunt.registerTask('test', ['default', 'mochaTest']);
     grunt.registerTask('deploy', ['githubAsset']);
 };
