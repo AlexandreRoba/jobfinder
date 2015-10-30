@@ -18,7 +18,8 @@
     "mongoose": "^4.2.3"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": "0.12.7",
+    "npm": "2.11.3"
   },
   "devDependencies": {
     "chai": "^3.3.0",
