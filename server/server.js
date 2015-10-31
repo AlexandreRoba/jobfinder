@@ -2,14 +2,15 @@
 /// <reference path='../typings/mongoose/mongoose.d.ts'/>
 var express = require("express");
 var mongoose = require("mongoose");
-var Job = require("./models/Job");
+var db = require("./db");
+var job = require("./models/job");
 var app = express();
 app.set("views", __dirname + "/views");
 app.set("view engine", "jade");
 app.use(express.static(__dirname + "/../public"));
 app.use("/vendor", express.static(__dirname + "/../node_modules"));
 app.get("/api/jobs", function (req, res) {
-    mongoose.model("Job").find({}).exec(function (error, collection) {
+    job.find({}).exec(function (error, collection) {
         res.send(collection);
     });
 });
@@ -23,7 +24,7 @@ mongoose.connect(connectionString);
 var con = mongoose.connection;
 con.once("open", function () {
     console.log("Connected to mongodb successfully!");
-    Job.seedJobs();
+    db.seedJobs();
 });
 console.log("Mongo Connection string is:" + connectionString);
 console.log("Server will listen on PORT:" + port);

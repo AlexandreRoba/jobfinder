@@ -3,7 +3,8 @@
 
 import express = require("express");
 import mongoose = require("mongoose");
-import Job =  require("./models/Job");
+import db = require("./db");
+import job =  require("./models/job");
 
 let app = express();
 
@@ -14,7 +15,7 @@ app.use(express.static(__dirname + "/../public"));
 app.use("/vendor",  express.static(__dirname + "/../node_modules"));
 
 app.get("/api/jobs", (req, res) => {
-   mongoose.model("Job").find({}).exec((error, collection) => {
+   job.find({}).exec((error, collection) => {
        res.send(collection);
    });
 });
@@ -36,7 +37,7 @@ let con = mongoose.connection;
 
 con.once("open", () => {
     console.log("Connected to mongodb successfully!");
-    Job.seedJobs();
+    db.seedJobs();
 });
 
 console.log("Mongo Connection string is:" + connectionString);
