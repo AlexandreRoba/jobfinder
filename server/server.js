@@ -19,7 +19,7 @@ app.get("*", function (req, res) {
 });
 var port = process.env.PORT || 3000;
 var ip = process.env.IP || "0.0.0.0";
-var connectionString = process.env.MONGOLAB_URI || "mongodb://localhost/jobfinder";
+var connectionString = process.env.MONGOLAB_URI || "mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/heroku_8pxnb825";
 mongoose.connect(connectionString);
 var con = mongoose.connection;
 con.once("open", function () {

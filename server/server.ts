@@ -26,7 +26,8 @@ app.get("*", function(req, res){
 
 let port = process.env.PORT || 3000;
 let ip = process.env.IP || "0.0.0.0";
-let connectionString = process.env.MONGOLAB_URI || "mongodb://localhost/jobfinder";
+//let connectionString = process.env.MONGOLAB_URI || "mongodb://localhost/jobfinder";
+let connectionString = process.env.MONGOLAB_URI || "mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/heroku_8pxnb825";
 
 //mongoose.connect("mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/jobfinder");
 //mongoose.connect("mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/heroku_8pxnb825");
