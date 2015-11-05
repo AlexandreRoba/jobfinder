@@ -30,7 +30,7 @@ let ip = process.env.IP || "0.0.0.0";
 let connectionString = process.env.MONGOLAB_URI || "mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/heroku_8pxnb825";
 let db = new Db();
 
-db.connect(connectionString);
+db.connect(connectionString, false);
 db.seedJobs();
 
 console.log("Mongo Connection string is:" + connectionString);

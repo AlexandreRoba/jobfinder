@@ -20,7 +20,7 @@ var port = process.env.PORT || 3000;
 var ip = process.env.IP || "0.0.0.0";
 var connectionString = process.env.MONGOLAB_URI || "mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/heroku_8pxnb825";
 var db = new Db();
-db.connect(connectionString);
+db.connect(connectionString, false);
 db.seedJobs();
 console.log("Mongo Connection string is:" + connectionString);
 console.log("Server will listen on PORT:" + port);
@@ -28,3 +28,4 @@ console.log("Server will listen at IP:" + ip);
 app.listen(port, ip, function () {
     console.log("listening on port " + port);
 });
+//# sourceMappingURL=server.js.map
