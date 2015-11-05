@@ -2,8 +2,7 @@
 /// <reference path='../typings/mongoose/mongoose.d.ts'/>
 
 import express = require("express");
-import mongoose = require("mongoose");
-import db = require("./db");
+import Db = require("./db");
 import job =  require("./models/job");
 
 let app = express();
@@ -26,20 +25,13 @@ app.get("*", function(req, res){
 
 let port = process.env.PORT || 3000;
 let ip = process.env.IP || "0.0.0.0";
-//let connectionString = process.env.MONGOLAB_URI || "mongodb://localhost/jobfinder";
+
+
 let connectionString = process.env.MONGOLAB_URI || "mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/heroku_8pxnb825";
+let db = new Db();
 
-//mongoose.connect("mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/jobfinder");
-//mongoose.connect("mongodb://jobfinderuser:password123@ds045714.mongolab.com:45714/heroku_8pxnb825");
-mongoose.connect(connectionString);
-
-
-let con = mongoose.connection;
-
-con.once("open", () => {
-    console.log("Connected to mongodb successfully!");
-    db.seedJobs();
-});
+db.connect(connectionString);
+db.seedJobs();
 
 console.log("Mongo Connection string is:" + connectionString);
 console.log("Server will listen on PORT:" + port );

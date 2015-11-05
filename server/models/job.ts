@@ -8,6 +8,5 @@ let jobSchema = new mongoose.Schema({
     description: {type: String}
 });
 
-let job = mongoose.model("JobModel", jobSchema);
+export = mongoose.model("Job", jobSchema);
 
-export = job;

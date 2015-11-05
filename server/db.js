@@ -1,9 +1,23 @@
 /// <reference path='../typings/mongoose/mongoose.d.ts'/>
+var mongoose = require("mongoose");
 var job = require("./models/job");
 var Db = (function () {
     function Db() {
     }
-    Db.seedJobs = function () {
+    Db.prototype.connect = function (connectionString, ignoreFailures) {
+        try {
+            mongoose.connect(connectionString);
+        }
+        catch (e) {
+            if (!ignoreFailures) {
+                throw e;
+            }
+        }
+    };
+    Db.prototype.disconnect = function () {
+        mongoose.disconnect();
+    };
+    Db.prototype.seedJobs = function () {
         job.find({}).exec(function (error, collection) {
             if (collection.length === 0) {
                 job.create({ title: "Cook", description: "You will be making bagels" });

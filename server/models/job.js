@@ -4,5 +4,4 @@ var jobSchema = new mongoose.Schema({
     title: { type: String },
     description: { type: String }
 });
-var job = mongoose.model("JobModel", jobSchema);
-module.exports = job;
+module.exports = mongoose.model("Job", jobSchema);

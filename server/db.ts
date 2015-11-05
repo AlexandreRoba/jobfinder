@@ -1,9 +1,23 @@
 /// <reference path='../typings/mongoose/mongoose.d.ts'/>
-
+import mongoose = require("mongoose");
 import job = require("./models/job");
 
 class Db {
-    static seedJobs(): void {
+    connect(connectionString: string, ignoreFailures: bool) : void {
+        try {
+            mongoose.connect(connectionString);
+        } catch (e) {
+            if (!ignoreFailures) {
+                throw e;
+            }
+        }
+    }
+
+    disconnect() {
+        mongoose.disconnect();
+    }
+
+    seedJobs(): void {
         job.find({}).exec((error, collection) => {
             if (collection.length === 0) {
                 job.create({title: "Cook", description: "You will be making bagels"});
