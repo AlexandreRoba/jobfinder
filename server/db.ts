@@ -3,7 +3,7 @@ import mongoose = require("mongoose");
 import job = require("./models/job");
 
 class Db {
-    connect(connectionString: string, ignoreFailures: bool) : void {
+    connect(connectionString: string, ignoreFailures: boolean) : void {
         try {
             mongoose.connect(connectionString);
         } catch (e) {
