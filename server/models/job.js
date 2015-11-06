@@ -5,4 +5,3 @@ var jobSchema = new mongoose.Schema({
     description: { type: String }
 });
 module.exports = mongoose.model("Job", jobSchema);
-//# sourceMappingURL=job.js.map

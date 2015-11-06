@@ -3,21 +3,54 @@ import mongoose = require("mongoose");
 import job = require("./models/job");
 
 class Db {
-    connect(connectionString: string, ignoreFailures: boolean) : void {
-        try {
-            mongoose.connect(connectionString);
-        } catch (e) {
-            if (!ignoreFailures) {
-                throw e;
+
+    constructor() {
+        this.isOpen = false;
+    }
+
+    public isOpen:boolean;
+
+    private processStopHandler = function () {
+        mongoose.connection.close(() => {
+            process.exit(0);
+        });
+    };
+
+    open(connectionString:string, callback?:(err:any) => void):void {
+        mongoose.connect(connectionString, (err)=> {
+            if (err) {
+                this.isOpen = false;
+                if (callback) {
+                    callback(err);
+                }
+            } else {
+                this.isOpen = true;
+                process.on("SIGINT", this.processStopHandler);
+                if (callback) {
+                    callback(null);
+                }
             }
-        }
+        });
+
     }
 
-    disconnect() {
-        mongoose.disconnect();
+    close(callback?:(err:any)=>void):void {
+        mongoose.disconnect((err)=> {
+            if (err) {
+                if (callback) {
+                    callback(err);
+                }
+            } else {
+                process.removeListener("SIGINT", this.processStopHandler);
+                this.isOpen = false;
+                if (callback) {
+                    callback(null);
+                }
+            }
+        });
     }
 
-    seedJobs(): void {
+    seedJobs():void {
         job.find({}).exec((error, collection) => {
             if (collection.length === 0) {
                 job.create({title: "Cook", description: "You will be making bagels"});

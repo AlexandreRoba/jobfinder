@@ -15,4 +15,3 @@ describe("get jobs", function () {
         });
     });
 });
-//# sourceMappingURL=jobs-data-spec.js.map
